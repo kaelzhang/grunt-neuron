@@ -34,12 +34,10 @@
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt": "~0.4.1"
   },
-  
   "dependencies": {
     "uglify-js": "~2.3.3",
-    ""
+    "async": "~0.2.8"
   },
-
   "peerDependencies": {
     "grunt": "~0.4.1"
   },
