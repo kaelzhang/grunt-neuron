@@ -81,7 +81,7 @@ module.exports = function(grunt) {
         });
 
         var separator = options.versionSeparator;
-        var pkg = options.pkg;
+        var pkg = options.pkg || grunt.file.readJSON( node_path.join(process.cwd(), './package.json') );
 
 // main entrance:
 // {

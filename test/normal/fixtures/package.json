@@ -3,7 +3,7 @@
   
   "version": "0.0.0",
 
-  "main": "test/fixtures/module.js",
+  "main": "test/normal/fixtures/module.js",
   
   "dependencies": {
     "deps": "~2.3.3",

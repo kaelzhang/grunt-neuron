@@ -23,25 +23,24 @@ module.exports = function(grunt) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['test/build'],
+            tests: ['test/**/build'],
         },
 
         // Configuration to be run (and then tested).
         neuron: {
-            options: {
-                versionSeparator: '@',
-                pkg: grunt.file.readJSON('test/fixtures/package.json'),
-                // mainFile: false,
-            },
+            normal: {
+                options: {
+                    versionSeparator: '@',
+                    pkg: grunt.file.readJSON('test/normal/fixtures/package.json'),
+                },
 
-            all: {
                 files: [
                     {
-                        expand: true,         // Enable dynamic expansion.
-                        cwd: 'test/fixtures/',            // Src matches are relative to this path.
-                        src: ['**/*.js'], // Actual pattern(s) to match.
-                        dest: 'test/build/',     // Destination path prefix.
-                        ext: '.js',     // Dest filepaths will have this extension.
+                        expand: true,                       // Enable dynamic expansion.
+                        cwd: 'test/normal/fixtures/',       // Src matches are relative to this path.
+                        src: ['**/*.js'],                   // Actual pattern(s) to match.
+                        dest: 'test/normal/build/',                // Destination path prefix.
+                        ext: '.js',                         // Dest filepaths will have this extension.
                     },
                 ]
             },
