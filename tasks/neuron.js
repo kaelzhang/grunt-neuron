@@ -75,7 +75,9 @@ module.exports = function(grunt) {
 
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
-            versionSeparator: '@'
+            versionSeparator: '@',
+            define: 'define',
+            mainFile: 'index.js'
         });
 
         var separator = options.versionSeparator;
@@ -128,10 +130,16 @@ module.exports = function(grunt) {
             var relative_path;
             var relative_id;
             var relative_id_dir;
+            var dest = f.dest;
 
             if(file_path === main_path){
                 id = main_id;
                 relative_id_dir = './';
+
+                if(options.mainFile){
+                    // test/fixtures/build/
+                    dest = node_path.join(node_path.dirname(dest), options.mainFile);
+                }
             
             }else{
 
@@ -237,18 +245,19 @@ module.exports = function(grunt) {
             });
 
             var wrapped = wrapper({
-                code    : content, 
+                define  : options.define,
+                code    : content,
                 deps    : deps,
                 id      : id
 
             }, grunt);
 
             if(wrapped){
-                grunt.file.write(f.dest, wrapped);
+                grunt.file.write(dest, wrapped);
             }
 
             // Print a success message.
-            grunt.log.writeln('File "' + f.dest + '" created.');
+            grunt.log.writeln('File "' + dest + '" created.');
         });
     });
 

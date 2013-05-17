@@ -28,13 +28,13 @@ module.exports = function(grunt) {
 
         // Configuration to be run (and then tested).
         neuron: {
-            default_options: {
+            options: {
+                versionSeparator: '@',
+                pkg: grunt.file.readJSON('test/fixtures/package.json'),
+                // mainFile: false,
+            },
 
-                options: {
-                    // versionSeparator: '@',
-                    pkg: grunt.file.readJSON('test/fixtures/package.json'),
-                },
-
+            all: {
                 files: [
                     {
                         expand: true,         // Enable dynamic expansion.
