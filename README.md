@@ -68,8 +68,7 @@ If set to `false`, "neuron" will use the original file name.
 grunt.initConfig({
   neuron: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      define: 'NR.define'
     },
     all: {
       files: [
