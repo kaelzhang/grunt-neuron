@@ -3,9 +3,15 @@
   
   "version": "0.0.0",
 
-  "main": "module.js",
+  "main": "test/fixtures/module.js",
   
   "dependencies": {
-    "deps": "~2.3.3"
+    "deps": "~2.3.3",
+    "deps2": "~0.1.4"
+  },
+
+  "cortexDependencies": {
+    "dep": "2.3.4",
+    "dep2": "0.1.5"
   }
 }
