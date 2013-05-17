@@ -5,12 +5,12 @@
 
   "main": "test/normal/fixtures/module.js",
   
-  "dependencies": {
+  "cortexDependencies": {
     "deps": "~2.3.3",
     "deps2": "~0.1.4"
   },
 
-  "cortexDependencies": {
+  "cortexExactDependencies": {
     "dep": "2.3.4",
     "dep2": "0.1.5"
   }

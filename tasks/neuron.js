@@ -106,7 +106,7 @@ module.exports = function(grunt) {
             return;
         }
 
-        var dependencies = pkg.cortexDependencies;
+        var dependencies = pkg.cortexExactDependencies;
 
         // -> 'module@0.0.1'
         var main_id = pkg.name + separator + pkg.version;
