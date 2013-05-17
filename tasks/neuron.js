@@ -236,8 +236,6 @@ module.exports = function(grunt) {
                 return dep;
             });
 
-            console.log('deps', deps);
-
             var wrapped = wrapper({
                 code    : content, 
                 deps    : deps,
