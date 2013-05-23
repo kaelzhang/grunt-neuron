@@ -13,6 +13,7 @@ var checker = require('../lib/check-wrapper');
 var uglifyjs = require('uglify-js');
 var wrapper = require('../lib/wrapper');
 var node_path = require('path');
+var node_fs = require('fs');
 var lang = require('../lib/lang');
 
 
@@ -130,16 +131,13 @@ module.exports = function(grunt) {
             var relative_path;
             var relative_id;
             var relative_id_dir;
-            var dest = f.dest;
+
+            // test/fixtures/build/index.js
+            var dest = node_path.join(node_path.dirname(f.dest), options.mainFile);
 
             if(file_path === main_path){
                 id = main_id;
                 relative_id_dir = './';
-
-                if(options.mainFile){
-                    // test/fixtures/build/
-                    dest = node_path.join(node_path.dirname(dest), options.mainFile);
-                }
             
             }else{
 
@@ -253,11 +251,19 @@ module.exports = function(grunt) {
             }, grunt);
 
             if(wrapped){
-                grunt.file.write(dest, wrapped);
-            }
+                var dir = node_path.dirname(dest);
 
-            // Print a success message.
-            grunt.log.writeln('File "' + dest + '" created.');
+                if(!grunt.file.exists(dir)){
+                    grunt.file.mkdir(dir);
+                }
+
+                node_fs.writeFileSync(dest, wrapped + '\n\n', {
+                    flag: 'a+'
+                });
+
+                // Print a success message.
+                grunt.log.writeln('Append wrapped "' + file_path + '" to file "' + dest + '"');
+            }
         });
     });
 
